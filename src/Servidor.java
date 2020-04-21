@@ -9,7 +9,7 @@ public class Servidor {
     public static void main(String[] args) {
 
         String mensagemCliente;
-        String maiuscula;
+        String feedback;
         int porta = 55660;
 
         System.out.println(" * Servido Iniciado *");
@@ -29,14 +29,14 @@ public class Servidor {
 
                 // Faz a leitura das informações enviadas pelo cliente as amazenam na variável "mensagemCliente"
                 mensagemCliente = inFromClient.readLine();
-                maiuscula = mensagemCliente.toUpperCase() + "\n";
+                feedback = mensagemCliente.toUpperCase() + "\n";
 
                 // Mostra o que foi recebido
                 System.out.println("Mensagem Recebida:");
-                System.out.println(maiuscula);
+                 System.out.println(mensagemCliente);
 
                 // Retorna as informações modificadas, ao cliente
-                outToClient.writeBytes(maiuscula);
+                outToClient.writeBytes(feedback);
             }
 
         } catch (IOException e) {

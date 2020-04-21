@@ -11,7 +11,7 @@ public class Cliente {
     public static void main(String[] args) {
 
         String textoenviado;
-        String textomodificad;
+        String textorecebido;
         int porta = 55660;
 
         do {
@@ -31,16 +31,19 @@ public class Cliente {
                 // Atribui para a variavel, envia para a streamer de saida e atribui para o textomodificad
                 textoenviado = inFromUSer.readLine();
                 outToServer.writeBytes(textoenviado + "\n");
-                textomodificad = inFromServer.readLine();
+                textorecebido = inFromServer.readLine();
 
-                // Mostra o que foi enviado
-                System.out.println("Mensagem enviada: " + textomodificad);
+                System.out.println("Mensagem recebida do Servidor: " + textorecebido);
+
+//                if (textoenviado.equals(textorecebido)){
+//                    System.out.println("Mensagem Recebida com Sucesso");
+//                }
+
                 client.close();
 
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Erro");
+                break;
             }
         } while (true);
     }
